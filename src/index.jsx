@@ -23,7 +23,8 @@ var IS_FIREFOX = global && global.navigator && global.navigator.userAgent && !!~
 
 if (IS_MAC){
     horizontalScrollbarStyle.position = 'absolute'
-	horizontalScrollbarStyle.height   = 20
+	// horizontalScrollbarStyle.height   = 20
+	horizontalScrollbarStyle.height   = (IS_FIREFOX ? 20 : 10);
 }
 
 const PT = React.PropTypes
