@@ -315,8 +315,11 @@ return /******/ (function(modules) { // webpackBootstrap
 				// var normalizedEvent = normalizeWheel(event)
 
 				var virtual = props.virtualRendering;
-				// var horizontal = event.shiftKey
-				var horizontal = Math.abs(event.deltaX) > Math.abs(event.deltaY);
+				if (IS_MAC) {
+					var horizontal = Math.abs(event.deltaX) > Math.abs(event.deltaY);
+				} else {
+					var horizontal = event.shiftKey;
+				}
 				var scrollStep = props.scrollStep;
 				var minScrollStep = props.minScrollStep;
 
@@ -327,9 +330,12 @@ return /******/ (function(modules) { // webpackBootstrap
 				var delta = event.deltaY;
 
 				if (horizontal) {
-					// delta = delta || normalizedEvent.pixelX
-					// delta = delta || event.deltaX
-					delta = event.deltaX;
+					if (IS_MAC) {
+						delta = event.deltaX;
+					} else {
+						delta = delta || normalizedEvent.pixelX;
+						delta = delta || event.deltaX;
+					}
 
 					minScrollStep = props.minHorizontalScrollStep || minScrollStep;
 				} else {
