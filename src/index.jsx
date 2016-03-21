@@ -242,7 +242,7 @@ class Scroller extends Component {
             if (IS_MAC) {
                 delta = event.deltaX;
             } else {
-                delta = delta || normalizedEvent.pixelX;
+                // delta = delta || normalizedEvent.pixelX;
                 delta = delta || event.deltaX;
             }
 
