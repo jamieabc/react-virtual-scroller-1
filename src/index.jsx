@@ -227,7 +227,7 @@ class Scroller extends Component {
         if (IS_MAC) {
             var horizontal = Math.abs(event.deltaX) > Math.abs(event.deltaY);
         } else {
-            var horizontal = event.shiftKey;
+            var horizontal = event.shiftKey || Math.abs(event.deltaX) > Math.abs(event.deltaY);
         }
 		var scrollStep = props.scrollStep
 		var minScrollStep = props.minScrollStep
